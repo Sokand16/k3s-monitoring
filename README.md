@@ -17,7 +17,7 @@ Port Forwarding в VirtualBox: Name → Prometheus, Host 9090 → Guest 90
 
 ### Автоматическая установка.
 ```bash
-git clone https://github.com/Sokand16/k3s-monitoring-demo.git
+git clone https://github.com/Sokand16/k3s-monitoring.git
 cd k3s-monitoring-demo
 ./deploy.sh
 ```
@@ -178,6 +178,9 @@ IP хоста пусто
 IP гостя пусто   
 Порт гостя 9090  
 
+<img width="597" height="204" alt="image" src="https://github.com/user-attachments/assets/cd2f1b0d-af46-438f-817a-359edf00aa15" />
+
+
 
 ## ✅ Шаг 6: Проверка доступа к Grafana с хоста.
 Откройте в браузере хоста: http://localhost:8080   
@@ -220,6 +223,8 @@ Kubernetes / Compute Resources / Cluster — нагрузка на весь кл
 Kubernetes / Compute Resources / Namespace (Pods) — по неймспейсам  
 Node Exporter / Nodes — CPU, RAM, Disk по каждой ноде  
 
+<img width="1781" height="825" alt="image" src="https://github.com/user-attachments/assets/6f15d7a3-ae07-4a54-bfce-5ca3704644d2" />
+
 
 ## 🔹 Посмотреть, что метрики собираются в Prometheus:  
 Откройте http://localhost:9090  
@@ -231,6 +236,9 @@ up  # окажет все активные таргеты.
 ```
 node_cpu_seconds_total # Метрики CPU от Node Exporter.
 ```
+
+****<img width="1286" height="792" alt="image" src="https://github.com/user-attachments/assets/1cd72d0e-faff-4480-bd1d-ed5178a2437f" />
+
 
 ## 📂 Структура проекта
 ```
