@@ -1,0 +1,21 @@
+# Архивы исходников
+*.zip
+*.tar.gz
+*.tar.bz2
+
+# Временные файлы ОС и редакторов
+.DS_Store
+Thumbs.db
+*~
+.*.swp
+*.bak
+
+# Локальные скрипты/логи
+build.log
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
