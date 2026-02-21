@@ -23,7 +23,7 @@ cd k3s-monitoring-demo
 ```
 # Ручная установка.
 
-## 🔧 Шаг 1: Установите k3s.
+## Шаг 1: Установка k3s.
 
 ```bash
 curl -sfL https://get.k3s.io | sh - # Если не удается скачать, смотри обходной путь установки k3s
@@ -32,7 +32,6 @@ sudo chown $USER ~/.kube/config
 chmod 600 ~/.kube/config
 ```
 Проверка:
-
 ```bash
 kubectl get nodes # Должна быть одна нода в состоянии Ready
 ```
@@ -55,7 +54,7 @@ sudo chmod +x /usr/local/bin/k3s
 #### Затем запустите установку без скачивания.
 curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_DOWNLOAD=true sudo sh -
 
-✅ Проверьте, что всё работает
+## Проверьте, что всё работает
 
 **1. Статус службы**  
 sudo systemctl status k3s
@@ -91,13 +90,13 @@ user   Ready    control-plane,master   171m   v1.31.4+k3s1
 
 
 
-## 📦 Шаг 2: Установите Helm.
+## Шаг 2: Установка Helm.
 
 ```bash
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 ```
 
-## 📊 Шаг 3: Установите мониторинг.
+## Шаг 3: Установка мониторинга.
 
 ```bash
 # Добавьте репозиторий
@@ -113,7 +112,7 @@ helm install monitoring prometheus-community/kube-prometheus-stack \
   --set grafana.adminPassword=prom-operator \
   --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false
 ```
-⏱️ Подождите пару минут, пока все поды запустятся.
+Нужно подождать пару минут, пока все поды не запустятся.
 
 Проверка:
 
@@ -121,7 +120,7 @@ helm install monitoring prometheus-community/kube-prometheus-stack \
 kubectl get pods -n monitoring # Все поды должны быть в состоянии Running
 ```
 
-## 🌐 Шаг 4: Настройте Ingress для Grafana.
+## Шаг 4: Настройка Ingress для Grafana.
 Создайте файл ingress.yaml:
 
 ```bash
@@ -160,7 +159,7 @@ kubectl get ingress -n monitoring # Должен быть grafana-ingress с ADD
 ```
 
 
-## 🔌 Шаг 5: Настройте проброс портов в VirtualBox для Grafana и Prometheus.
+## Шаг 5: Настройка проброса портов в VirtualBox для Grafana и Prometheus.
  
 Зайдите в VirtualBox: Настройки → Сеть → NAT → Дополнительно → Проброс портов   
 Добавьте правила:   
@@ -197,7 +196,7 @@ IP гостя пусто
 kubectl port-forward svc/monitoring-kube-prometheus-prometheus -n monitoring 9090:9090
 ```
 
-💡 Эта команда перенаправляет локальный порт 9090 на сервис Prometheus.
+**Эта команда перенаправляет локальный порт 9090 на сервис Prometheus.**
 
 ## Шаг 8: Проверка доступа Prometheus с хоста.
 Откройте в браузере хоста: http://localhost:9090  
@@ -226,11 +225,11 @@ Node Exporter / Nodes — CPU, RAM, Disk по каждой ноде
 <img width="1781" height="825" alt="image" src="https://github.com/user-attachments/assets/6f15d7a3-ae07-4a54-bfce-5ca3704644d2" />
 
 
-## 🔹 Посмотреть, что метрики собираются в Prometheus:  
+## Посмотреть, что метрики собираются в Prometheus:  
 Откройте http://localhost:9090  
 В строке запроса введите:  
 ```
-up  # окажет все активные таргеты.
+up  # покажет все активные таргеты.
 ```
 Или:
 ```
@@ -249,4 +248,3 @@ k3s-monitoring-demo/
 ├── deploy.sh                 ← скрипт автоматической установки k3s
 ├── ingress.yaml              ← Ingress для Grafana
 ```
-# k3s-monitoring
